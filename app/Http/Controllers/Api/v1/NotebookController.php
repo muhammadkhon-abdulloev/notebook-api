@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NotebookStoreRequest;
+use App\Http\Requests\NotebookUpdateRequest;
 use App\Http\Resources\NotebookResource;
 use App\Models\Notebook;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class NotebookController extends Controller
 {
@@ -26,9 +28,11 @@ class NotebookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NotebookStoreRequest $request)
     {
-        //
+        $created_notebook = Notebook::create($request->validated());
+        
+        return new NotebookResource($created_notebook);
     }
 
     /**
@@ -37,10 +41,10 @@ class NotebookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Notebook $notebook)
     {
         // return Notebook::find($id);
-        return new NotebookResource(Notebook::find($id));
+        return new NotebookResource($notebook);
     }
 
     /**
@@ -50,9 +54,11 @@ class NotebookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NotebookUpdateRequest $request, Notebook $notebook)
     {
-        //
+        $notebook->update($request->validated());
+
+        return new NotebookResource($notebook);
     }
 
     /**
@@ -61,8 +67,10 @@ class NotebookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Notebook $notebook)
     {
-        //
+        $notebook->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

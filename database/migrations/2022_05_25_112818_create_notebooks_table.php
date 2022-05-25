@@ -16,13 +16,12 @@ return new class extends Migration
         Schema::create('notebooks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('company');
+            $table->string('company')->default('');
             $table->string('phone');
             $table->string('email');
             $table->date('birthday');
-            $table->string('photo');
-            $table->string('status');
-            $table->timestamps();
+            $table->string('photo')->default('default.png');
+            $table->string('status')->default('active');
         });
     }
 
