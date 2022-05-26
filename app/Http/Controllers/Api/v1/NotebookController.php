@@ -31,7 +31,31 @@ class NotebookController extends Controller
      *    ),
      *     @OA\Response(
      *         response="200",
-     *         description="Everything is fine",
+     *         description="Successfully",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="400",
+     *         description="Bad request",
+     *         ),
+     *      
+     *      @OA\Response(
+     *         response="404",
+     *         description="Notebook not found",
+     *         ),     * 
+     *      @OA\Response(
+     *         response="405",
+     *         description="Method not allowed",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="500",
+     *         description="Internal server error",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="503",
+     *         description="Service unavailable",
      *         )
      *     ),
      * )
@@ -60,12 +84,38 @@ class NotebookController extends Controller
      *     tags={"Notebook"},
      *     summary="Create yet another notebook",
      *     @OA\Response(
-     *         response="200",
-     *         description="Everything is fine",
+     *         response="201",
+     *         description="Note created successfully",
      *     ),
-     *     @OA\RequestBody(
+     * 
+     *      @OA\RequestBody(
      *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/NotebookStoreRequest"),
      *     ),
+     * 
+     *      @OA\Response(
+     *         response="400",
+     *         description="Bad request",
+     *         ),
+     *      
+     *      @OA\Response(
+     *         response="404",
+     *         description="Notebook not found",
+     *         ),     * 
+     *      @OA\Response(
+     *         response="405",
+     *         description="Method not allowed",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="500",
+     *         description="Internal server error",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="503",
+     *         description="Service unavailable",
+     *         ),
      * )
      * Store a newly created notebook in storage.
      *
@@ -97,7 +147,31 @@ class NotebookController extends Controller
      *    ),
      *     @OA\Response(
      *         response="200",
-     *         description="Everything is fine",
+     *         description="Notebook founded successfully",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="400",
+     *         description="Bad request",
+     *         ),
+     *      
+     *      @OA\Response(
+     *         response="404",
+     *         description="Notebook not found",
+     *         ),     * 
+     *      @OA\Response(
+     *         response="405",
+     *         description="Method not allowed",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="500",
+     *         description="Internal server error",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="503",
+     *         description="Service unavailable",
      *         )
      *     ),
      * )
@@ -113,7 +187,55 @@ class NotebookController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     *     path="/notebook/{id}",
+     *     operationId="notebookUpdate",
+     *     tags={"Notebook"},
+     *     summary="Create yet another notebook",
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          description="The id of the Notebook",
+     *          required=true,
+     *          example="1",
+     *          @OA\Schema(
+     *              type="integer",
+     *          ),
+     *      ),
+     * 
+     *      @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/NotebookStoreRequest"),
+     *     ),
+     *     @OA\Response(
+     *         response="201",
+     *         description="Note updated successfully",
+     *     ),
+     * 
+     *      @OA\Response(
+     *         response="400",
+     *         description="Bad request",
+     *         ),
+     *      
+     *      @OA\Response(
+     *         response="404",
+     *         description="Notebook not found",
+     *         ),     * 
+     *      @OA\Response(
+     *         response="405",
+     *         description="Method not allowed",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="500",
+     *         description="Internal server error",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="503",
+     *         description="Service unavailable",
+     *         ),
+     * )     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -143,8 +265,32 @@ class NotebookController extends Controller
      *          )
      *    ),
      *     @OA\Response(
-     *         response="202",
+     *         response="204",
      *         description="Note deleted",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="400",
+     *         description="Bad request",
+     *         ),
+     *      
+     *      @OA\Response(
+     *         response="404",
+     *         description="Notebook not found",
+     *         ),     * 
+     *      @OA\Response(
+     *         response="405",
+     *         description="Method not allowed",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="500",
+     *         description="Internal server error",
+     *         ),
+     * 
+     *      @OA\Response(
+     *         response="503",
+     *         description="Service unavailable",
      *         )
      *     ),
      * )

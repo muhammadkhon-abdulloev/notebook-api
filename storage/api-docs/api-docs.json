@@ -39,7 +39,22 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Everything is fine"
+                        "description": "Successfully"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Notebook not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "503": {
+                        "description": "Service unavailable"
                     }
                 }
             },
@@ -50,11 +65,33 @@
                 "summary": "Create yet another notebook",
                 "operationId": "notebookCreate",
                 "requestBody": {
-                    "required": true
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NotebookStoreRequest"
+                            }
+                        }
+                    }
                 },
                 "responses": {
-                    "200": {
-                        "description": "Everything is fine"
+                    "201": {
+                        "description": "Note created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Notebook not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "503": {
+                        "description": "Service unavailable"
                     }
                 }
             }
@@ -80,7 +117,71 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Everything is fine"
+                        "description": "Notebook founded successfully"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Notebook not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "503": {
+                        "description": "Service unavailable"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Create yet another notebook",
+                "operationId": "notebookUpdate",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the Notebook",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NotebookStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Note updated successfully"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Notebook not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "503": {
+                        "description": "Service unavailable"
                     }
                 }
             },
@@ -103,10 +204,73 @@
                     }
                 ],
                 "responses": {
-                    "202": {
+                    "204": {
                         "description": "Note deleted"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Notebook not found"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "503": {
+                        "description": "Service unavailable"
                     }
                 }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "NotebookStoreRequest": {
+                "title": "Notebook showing request",
+                "description": "Creating Notebook",
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Full name",
+                        "type": "string",
+                        "example": "John Doe Doe"
+                    },
+                    "company": {
+                        "title": "company",
+                        "description": "Company name",
+                        "type": "string",
+                        "example": "SARTOJ Tech."
+                    },
+                    "phone": {
+                        "title": "phone",
+                        "description": "Your phone number",
+                        "type": "string",
+                        "example": "+7777777777"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "Your email",
+                        "type": "string",
+                        "example": "info@sartoj.tech"
+                    },
+                    "birthday": {
+                        "title": "birthday",
+                        "description": "Your bitrthday",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2022-02-22"
+                    },
+                    "photo": {
+                        "title": "photo",
+                        "description": "Your photo url",
+                        "type": "string",
+                        "example": "avatar.png"
+                    }
+                },
+                "type": "object"
             }
         }
     },
