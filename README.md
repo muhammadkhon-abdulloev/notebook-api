@@ -1,46 +1,39 @@
-# Тестовое задание на позицию php 
-Результат выполнения задания нужно будет оформить здесь же, на гитхабе.
-В качестве ответа __не нужно__ присылать никаких ZIP-архивов и наборов файлов. Все ваши ответы должны быть оформлены на https://github.com/ или на https://bitbucket.org/
-__Присылаете ссылку на ваш репозиторий в форму https://24.future-group.ru/pub/form/4/xnof82/.__
+# Notebook API v1. Technical project for Future PHP developer position.
 
-Если у вас еще нет аккаунта на github, то это хороший повод его завести.
+## [About position and task](http://https://github.com/muhammadkhon-abdulloev/notebook-api/Technical.md "Technical requirements")
 
-Если есть вопросы, вы всегда их можете задать в чате https://t.me/futuregroup_php_chat
+## Requirements
+- Laravel
+- PHP
 
-ЕСЛИ ВЫСЫЛАЕТЕ ПОДОБНОЕ ЗАДАНИЕ, ТО ПОДГОТОВЬТЕ ОПИСАНИЕ ФУНКЦИОНАЛА ДЛЯ ПРОВЕРЯЮЩЕГО.
+For running OpenAPI docs first you need to install and configure  [this](https://github.com/DarkaOnLine/L5-Swagger/wiki/Installation-&-Configuration "this") package.
 
-Срок 5 рабочих дней с момента получения задания, срок проверки — 5 рабочих дней. Мы отправим ответ на email, если ответа нет, проверьте спам.
-
-## Задание
+------------
 
 
-Разработать REST API для записной книжки . Примерная структура методов: 
+Available endpoints:
+# Notebook API v1. Technical project for Future PHP developer position.
+
+## [About position and task](http://https://github.com/muhammadkhon-abdulloev/notebook-api/Technical.md "Technical requirements")
+
+## Requirements
+- Laravel
+- PHP
+
+For running OpenAPI docs first you need to install and configure  [this](https://github.com/DarkaOnLine/L5-Swagger/wiki/Installation-&-Configuration "this") package.
+
+------------
 
 
-    1.1. GET /api/v1/notebook/
-    1.2. POST /api/v1/notebook/
-    1.3. GET /api/v1/notebook/<id>/
-    1.4. POST /api/v1/notebook/<id>/
-    1.5. DELETE /api/v1/notebook/<id>/
-    
-    
-Поля для POST запискной книжки: 
-   
-   
-    1. ФИО (обязательное)
-    2. Компания
-    3. Телефон (обязательное)
-    4. Email (обязательное)
-    5. Дата рождения 
-    6. Фото
+Available endpoints:
+    GET /api/v1/notebook/
+    POST /api/v1/notebook/
+    GET /api/v1/notebook/<id>/
+    POST /api/v1/notebook/<id>/
+    DELETE /api/v1/notebook/<id>/
+ 
+OpenAPI documents url:
+[![](http://https://github.com/muhammadkhon-abdulloev/notebook-api/image_2022-05-26_19-56-37.png)](http://https://github.com/muhammadkhon-abdulloev/notebook-api/image_2022-05-26_19-56-37.png)
 
-Нужна возможность выводить информацию в списке по странично   
-
-Swagger для отображения методов api (https://swagger.io/)
-
-
-Так же напишите нам, как вы тестировали результат своей работы. Какие используете инструменты и как вы осуществляете тестирование.
-
-Дополнительным плюсом будет: Финальный билд приложения должен быть запускаться из Docker контейнера (хотябы с минимальной конфигурацией)  
-  
----
+OpenAPI documents url:
+[![](http://https://github.com/muhammadkhon-abdulloev/notebook-api/image_2022-05-26_19-56-37.png)](http://https://github.com/muhammadkhon-abdulloev/notebook-api/image_2022-05-26_19-56-37.png)
