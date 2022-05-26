@@ -14,7 +14,7 @@ For running OpenAPI docs first you need to install and configure  [this](https:/
 Available endpoints:
 # Notebook API v1. Technical project for Future PHP developer position.
 
-## [About position and task](http://https://github.com/muhammadkhon-abdulloev/notebook-api/Technical.md "Technical requirements")
+## [About position and task](https://github.com/muhammadkhon-abdulloev/notebook-api/Technical.md "Technical requirements")
 
 ## Requirements
 - Laravel
