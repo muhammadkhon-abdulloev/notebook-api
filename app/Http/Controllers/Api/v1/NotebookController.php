@@ -9,12 +9,36 @@ use App\Http\Resources\NotebookResource;
 use App\Models\Notebook;
 use Illuminate\Http\Response;
 
+
+
 class NotebookController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/notebook",
+     *     operationId="notebookAll",
+     *     tags={"Notebook"},
+     *     summary="Display all Notebooks. 10 items per page",
+     *     @OA\Parameter(
+     *          name="page",
+     *          in="query",
+     *          description="The page number.",
+     *          example="4",
+     *          required=false,
+     *          @OA\Schema(
+     *              type="integer",
+     *          )
+     *    ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Everything is fine",
+     *         )
+     *     ),
+     * )
      *
-     * @return \Illuminate\Http\Response
+     * Display a listing of the notebook.
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -24,13 +48,26 @@ class NotebookController extends Controller
         return NotebookResource::collection(Notebook::all());
         */
 
-        // pagination. 15 item per page.
-        return NotebookResource::collection(Notebook::paginate());
+        // pagination. 10 item per page.
+        return NotebookResource::collection(Notebook::paginate(10));
         
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *     path="/notebook",
+     *     operationId="notebookCreate",
+     *     tags={"Notebook"},
+     *     summary="Create yet another notebook",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Everything is fine",
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *     ),
+     * )
+     * Store a newly created notebook in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -43,10 +80,31 @@ class NotebookController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Get(
+     *     path="/notebook/{id}",
+     *     operationId="notebookByID",
+     *     tags={"Notebook"},
+     *     summary="Display Notebook by ID",
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          description="The id of the Notebook",
+     *          required=true,
+     *          example="1",
+     *          @OA\Schema(
+     *              type="integer",
+     *          )
+     *    ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Everything is fine",
+     *         )
+     *     ),
+     * )
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Display notebook by id.
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Notebook $notebook)
     {
@@ -69,6 +127,28 @@ class NotebookController extends Controller
     }
 
     /**
+     * @OA\Delete(
+     *     path="/notebook/{id}",
+     *     operationId="deleteByID",
+     *     tags={"Notebook"},
+     *     summary="Delete Notebook by ID",
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          description="The id of the Notebook",
+     *          required=true,
+     *          example="5",
+     *          @OA\Schema(
+     *              type="integer",
+     *          )
+     *    ),
+     *     @OA\Response(
+     *         response="202",
+     *         description="Note deleted",
+     *         )
+     *     ),
+     * )
+     *
      * Remove the specified resource from storage.
      *
      * @param  int  $id
