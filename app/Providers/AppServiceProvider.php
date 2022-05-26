@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use L5Swagger;
 
 class AppServiceProvider extends ServiceProvider
 {

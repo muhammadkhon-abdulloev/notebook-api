@@ -18,8 +18,15 @@ class NotebookController extends Controller
      */
     public function index()
     {
-        // return Notebook::all();
+        
+        /*
+        // without pagination.
         return NotebookResource::collection(Notebook::all());
+        */
+
+        // pagination. 15 item per page.
+        return NotebookResource::collection(Notebook::paginate());
+        
     }
 
     /**
