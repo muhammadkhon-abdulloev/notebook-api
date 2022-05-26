@@ -20,6 +20,9 @@ DELETE /api/v1/notebook/<id>/
 ```
 
 OpenAPI documents url:
+
+`http://localhost:8000/api/v1/docs`
+
 [![](https://github.com/muhammadkhon-abdulloev/notebook-api/blob/main/image_2022-05-26_19-56-37.png)](https://github.com/muhammadkhon-abdulloev/notebook-api/blob/main/image_2022-05-26_19-56-37.png)
 
 
