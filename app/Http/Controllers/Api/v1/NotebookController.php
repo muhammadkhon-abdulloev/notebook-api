@@ -18,7 +18,7 @@ class NotebookController extends Controller
      *     path="/notebook",
      *     operationId="notebookAll",
      *     tags={"Notebook"},
-     *     summary="Display all Notebooks. 10 items per page",
+     *     summary="Display all Notebooks. 10 objects per page",
      *     @OA\Parameter(
      *          name="page",
      *          in="query",
@@ -64,6 +64,8 @@ class NotebookController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    // method index - shows all of the objects recived from the db. paginate datas by 10 objects per page
     public function index()
     {
         
@@ -72,7 +74,7 @@ class NotebookController extends Controller
         return NotebookResource::collection(Notebook::all());
         */
 
-        // pagination. 10 item per page.
+        // pagination. 10 objects per page.
         return NotebookResource::collection(Notebook::paginate(10));
         
     }
@@ -122,6 +124,9 @@ class NotebookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    // method store - stores the newly created object to the db and returns the created object (Notebook)
+    
     public function store(NotebookStoreRequest $request)
     {
         $created_notebook = Notebook::create($request->validated());
@@ -180,6 +185,8 @@ class NotebookController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    // method show - reads the object's fields from the db by id and returns the received fields
     public function show(Notebook $notebook)
     {
         // return Notebook::find($id);
@@ -241,6 +248,8 @@ class NotebookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    // method update - updates the object's received fields by id and returns the updated object
     public function update(NotebookUpdateRequest $request, Notebook $notebook)
     {
         $notebook->update($request->validated());
@@ -300,6 +309,8 @@ class NotebookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    // method destroy - removes an object from the db by id and returns the http status code
     public function destroy(Notebook $notebook)
     {
         $notebook->delete();
